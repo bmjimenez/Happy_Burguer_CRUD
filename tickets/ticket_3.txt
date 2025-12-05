@@ -1,0 +1,7 @@
+***** Happy Burger *****
+Pedido No: 3
+Cliente: Ana Lopez
+Producto: Combo 3 Hamburguesa triple con papas y refresco grande
+Precio: $200.00
+------------------------
+¡Gracias por su compra!

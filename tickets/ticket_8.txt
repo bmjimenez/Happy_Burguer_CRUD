@@ -1,0 +1,10 @@
+************************
+*     Happy Burger     *
+************************
+Fecha: 2025-12-04 20:32:01
+Pedido No: 8
+Cliente: Bernardo Moya Ibarra
+Producto: Combo 2 Hamburguesa doble con papas y refresco mediano
+Precio: $150.00
+------------------------
+¡Gracias por su compra!

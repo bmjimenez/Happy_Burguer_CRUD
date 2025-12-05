@@ -1,0 +1,10 @@
+************************
+*     Happy Burger     *
+************************
+Fecha: 2025-12-04 20:29:53
+Pedido No: 7
+Cliente: Bernardo Moya Jimenez
+Producto: Combo 3 Hamburguesa triple con papas y refresco grande
+Precio: $200.00
+------------------------
+¡Gracias por su compra!
