@@ -14,5 +14,7 @@ Para correr el proyecto , instalar las dependencias de Python que vienen en el a
 y ejecutar desde raiz del proyecto el comando: 
 python3 -m routes.rutas
 
+Para actalizar datos de los registros simplemente modifique los datos en las cajas de texto con los campos desplegados en la pagina web  y haga click en ACTUALIZAR . 
+
 
 
