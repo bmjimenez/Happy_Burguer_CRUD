@@ -3,7 +3,7 @@ Proyecto Happy Burguer para la clase de Python Avanzado del curso de Fullstack d
 
 Autor: Jose Bernardo Moya Jimenez
 
-Fecha: 2024-12-8
+Fecha: 2024-12-6
 
 email: bmjimenez@hotmail.com
 
@@ -14,7 +14,17 @@ Para correr el proyecto , instalar las dependencias de Python que vienen en el a
 y ejecutar desde raiz del proyecto el comando: 
 python3 -m routes.rutas
 
-Para actalizar datos de los registros simplemente modifique los datos en las cajas de texto con los campos desplegados en la pagina web  y haga click en ACTUALIZAR . 
+/routes/rutas.py es el archivo principal del proyecto
+
+NOTAS IMPORTANTES :
+
+Para actualizar datos de los registros simplemente modifique los datos en las cajas de texto con los campos desplegados en la pagina web y haga click en ACTUALIZAR, aparecera un mensaje en la parte superior indicando el resultado de la operacion.
+
+El mismo caso aplica para eliminar registros, haga click en el boton ELIMINAR que aparece al final del registro y aparecera un mensaje indicando si la operacion fue exitosa. 
+
+Se generan tickets en archivos .txt en el directorio /tickets para simular la impresion de un recibo de compra.
+
+
 
 
 
