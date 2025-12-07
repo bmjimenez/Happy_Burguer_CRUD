@@ -1,0 +1,10 @@
+************************
+*     Happy Burger     *
+************************
+Fecha: 2025-12-06 20:09:29
+Pedido No: 10
+Cliente: Guillermo del Toro
+Producto: Chicken nuggets
+Precio: $130.00
+------------------------
+¡Gracias por su compra!

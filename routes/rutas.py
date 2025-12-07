@@ -13,7 +13,7 @@ email: bmjimenez@hotmail.com
 import os
 import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, flash,abort
-from db import init_db
+from db import init_db,get_connection
 from models.clientes import Cliente
 from models.menu import Menu
 from models.pedido import Pedido
@@ -54,10 +54,13 @@ def index():
     tickets = []
 
     if os.path.exists(tickets_dir):
-        # Obtener lista de tickets y ordenarlos alfabéticamente
+    # Obtener lista de tickets y ordenarlos por fecha de creación (más reciente primero)
         tickets = sorted(
-        [f for f in os.listdir(tickets_dir) if f.endswith(".txt")]
-        )
+        [f for f in os.listdir(tickets_dir) if f.endswith(".txt")],
+        key=lambda archivo: os.path.getctime(os.path.join(tickets_dir, archivo)),
+        reverse=True   # True = más nuevos primero, False = más viejos primero
+    )
+
 
     return render_template(
         "index.html",
@@ -240,12 +243,15 @@ def eliminar_pedido(id_pedido):
 
     return redirect(url_for("index", tab=tab))
 
+# ------------------ AYUDA ------------------ #
+
 # Ruta de ayuda 
 @app.route("/ayuda")
 def ayuda():
     return render_template("ayuda.html")
 
-# Ruta para ver el contenido de un ticket
+# ------------------ TICKETS ------------------ #
+# Ruta para mostrar el contenido de un ticket
 @app.route("/tickets/<path:nombre>")
 def ver_ticket(nombre):
     # Directorio de tickets en la raíz del proyecto
@@ -269,6 +275,45 @@ def ver_ticket(nombre):
 
     # Renderizar una plantilla simple que muestre el ticket
     return render_template("ticket.html", nombre=safe_name, contenido=contenido)
+
+# ------------------ CAJA  ------------------ #
+
+# Corte de caja, solo ventas del dia porque las tablas de pedidos no tienen campo fecha
+@app.route("/cortecaja")
+def corte_caja():
+    """
+    Reporte de Corte de Caja.
+    NOTA: actualmente la tabla Pedido no tiene fecha, así que el corte
+    se hace sobre TODOS los pedidos registrados.
+    """
+    resumen = []
+    total_general = 0.0
+
+    with get_connection() as conn:
+        cur = conn.cursor()
+        cur.execute(
+            """
+            SELECT
+                P.IdMenu              AS IdMenu,
+                M.nombre              AS nombre_menu,
+                COUNT(*)              AS cantidad_vendida,
+                SUM(P.precio)         AS subtotal
+            FROM Pedido P
+            JOIN Menu   M ON P.IdMenu = M.IdMenu
+            GROUP BY P.IdMenu, M.nombre
+            ORDER BY P.IdMenu;
+            """
+        )
+        resumen = cur.fetchall()
+
+    if resumen:
+        total_general = sum(r["subtotal"] for r in resumen)
+
+    return render_template(
+        "corte_caja.html",
+        resumen=resumen,
+        total_general=total_general
+    )
 
 
 if __name__ == "__main__":

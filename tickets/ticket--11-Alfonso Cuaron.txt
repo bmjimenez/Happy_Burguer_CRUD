@@ -1,0 +1,10 @@
+************************
+*     Happy Burger     *
+************************
+Fecha: 2025-12-06 20:23:18
+Pedido No: 11
+Cliente: Alfonso Cuaron
+Producto: Combo 1 Hamburguesa sencilla con papas y refresco chico
+Precio: $100.00
+------------------------
+¡Gracias por su compra!

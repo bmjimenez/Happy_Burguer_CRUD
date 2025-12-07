@@ -89,7 +89,7 @@ class Pedido:
         fecha_hora = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         os.makedirs("tickets", exist_ok=True)
-        ruta_ticket = os.path.join("tickets", f"ticket_{id_pedido}.txt")
+        ruta_ticket = os.path.join("tickets", f"ticket-{id_pedido}-{fecha_hora}-{cliente}.txt")
 
         with open(ruta_ticket, "w", encoding="utf-8") as f:
             f.write("************************\n")

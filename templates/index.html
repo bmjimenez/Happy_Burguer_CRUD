@@ -102,7 +102,17 @@
                             Tickets
                         </button>
                     </li>
-                    
+                    <!-- CORTE DE CAJA -->
+                    <li class="nav-item" role="presentation">
+                        <a
+                            class="nav-link"
+                            href="{{ url_for('corte_caja') }}"
+                        >
+                            Corte de Caja del d&iacute;a
+                        </a>
+                    </li>
+                    <p></p>
+                    <p></p>
                     <!-- AYUDA -->
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" href="{{ url_for('ayuda') }}" target="_blank">
@@ -436,7 +446,7 @@
     <h2 class="mb-3">Tickets generados</h2>
 
     <div class="card section-card">
-        <div class="card-header">Archivos en la carpeta 'tickets'</div>
+        <div class="card-header">Consulta de Tickets (ordenados por fecha de creación descendente)</div>
         <div class="card-body">
 
             {% if tickets %}

@@ -1,0 +1,10 @@
+************************
+*     Happy Burger     *
+************************
+Fecha: 2025-12-06 20:03:50
+Pedido No: 9
+Cliente: Jorge Garcia
+Producto: Ensalada con vegetales y pollo
+Precio: $105.00
+------------------------
+¡Gracias por su compra!
