@@ -12,7 +12,7 @@ email: bmjimenez@hotmail.com
 #Importaciones
 import os
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash,abort
 from db import init_db
 from models.clientes import Cliente
 from models.menu import Menu
@@ -49,6 +49,16 @@ def index():
         pedido_buscado = Pedido.consultar_pedido(id_pedido_buscar)
         # NO forzamos tab aquí, respetamos el tab recibido (normalmente 'pedidos' definido arriba)
 
+    # Listar archivos de la carpeta tickets
+    tickets_dir = os.path.join(BASE_DIR, "tickets")
+    tickets = []
+
+    if os.path.exists(tickets_dir):
+        # Obtener lista de tickets y ordenarlos alfabéticamente
+        tickets = sorted(
+        [f for f in os.listdir(tickets_dir) if f.endswith(".txt")]
+        )
+
     return render_template(
         "index.html",
         clientes=clientes,
@@ -56,6 +66,7 @@ def index():
         pedidos=pedidos,
         pedido_buscado=pedido_buscado,
         tab_activa=tab_activa,
+        tickets=tickets
     )
 
 
@@ -229,4 +240,36 @@ def eliminar_pedido(id_pedido):
 
     return redirect(url_for("index", tab=tab))
 
+# Ruta de ayuda 
+@app.route("/ayuda")
+def ayuda():
+    return render_template("ayuda.html")
 
+# Ruta para ver el contenido de un ticket
+@app.route("/tickets/<path:nombre>")
+def ver_ticket(nombre):
+    # Directorio de tickets en la raíz del proyecto
+    tickets_dir = os.path.join(BASE_DIR, "tickets")
+
+    # Evitar path traversal: nos quedamos solo con el nombre de archivo
+    safe_name = os.path.basename(nombre)
+
+    # Solo permitimos archivos .txt
+    if not safe_name.endswith(".txt"):
+        abort(404)
+
+    file_path = os.path.join(tickets_dir, safe_name)
+
+    if not os.path.isfile(file_path):
+        abort(404)
+
+    # Leer contenido del ticket
+    with open(file_path, "r", encoding="utf-8") as f:
+        contenido = f.read()
+
+    # Renderizar una plantilla simple que muestre el ticket
+    return render_template("ticket.html", nombre=safe_name, contenido=contenido)
+
+
+if __name__ == "__main__":
+    app.run(debug=True, use_reloader=False)
