@@ -12,9 +12,9 @@ Este proyecto utiliza una DB en SQLite, y es un CRUD de fullstack, para demostra
 
 Para correr el proyecto , instalar las dependencias de Python que vienen en el archivo requirements.txt 
 y ejecutar desde raiz del proyecto el comando: 
-python3 -m routes.rutas
+python3 -m app
 
-/routes/rutas.py es el archivo principal del proyecto
+app.py es el archivo principal del proyecto y de ahi se llama a Routes/rutas.py 
 
 NOTAS IMPORTANTES :
 
