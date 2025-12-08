@@ -434,40 +434,36 @@
 
                     </div> <!-- Fin pestaña Clientes -->
                     
-                     <!-- ============= PESTAÑA TICKETS ============= -->
                     <!-- ============= PESTAÑA TICKETS ============= -->
-<!-- ============= PESTAÑA TICKETS ============= -->
-<div
-    class="tab-pane fade {% if tab_activa == 'tickets' %}show active{% endif %}"
-    id="tickets"
-    role="tabpanel"
-    aria-labelledby="tickets-tab"
->
-    <h2 class="mb-3">Tickets generados</h2>
+                    <div
+                        class="tab-pane fade {% if tab_activa == 'tickets' %}show active{% endif %}"
+                        id="tickets"
+                        role="tabpanel"
+                        aria-labelledby="tickets-tab"
+                    >
+                        <h2 class="mb-3">Tickets generados</h2>
 
-    <div class="card section-card">
-        <div class="card-header">Consulta de Tickets (ordenados por mas nuevos primero)</div>
-        <div class="card-body">
+                        <div class="card section-card">
+                            <div class="card-header">Consulta de Tickets (ordenados por mas nuevos primero)</div>
+                            <div class="card-body">
 
-            {% if tickets %}
-                <ul class="list-group">
-                    {% for t in tickets %}
-                        <li class="list-group-item">
-                            <a href="{{ url_for('ver_ticket', nombre=t) }}">
-                                {{ t }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <div class="alert alert-info">No hay tickets generados todavía.</div>
-            {% endif %}
-
-        </div>
-    </div>
-</div>
-
-<!-- Fin pestaña Tickets -->
+                                {% if tickets %}
+                                    <ul class="list-group">
+                                        {% for t in tickets %}
+                                            <li class="list-group-item">
+                                                <a href="{{ url_for('ver_ticket', nombre=t) }}">
+                                                    {{ t }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <div class="alert alert-info">No hay tickets generados todavía.</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin pestaña Tickets -->
 
                 </div> <!-- fin tab-content -->
             </div>
