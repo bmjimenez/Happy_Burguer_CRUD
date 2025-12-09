@@ -7,7 +7,7 @@ Fecha: 2024-12-6
 
 email: bmjimenez@hotmail.com
 
-Este proyecto utiliza una DB en SQLite, y es un CRUD de fullstack, para demostrar habilidades en backend development avanzado con Flask y Python
+Este proyecto utiliza una DB en SQLite, y es un CRUD de fullstack, para demostrar habilidades en backend development avanzado con Programacion orientada a objetos + Flask en Python
 
 
 Para correr el proyecto , instalar las dependencias de Python que vienen en el archivo requirements.txt 
